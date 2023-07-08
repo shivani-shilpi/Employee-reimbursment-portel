@@ -1,0 +1,28 @@
+<div style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-xl-12">
+        <%= form_with(model: @bill ) do |f| %>
+          <div class="form-group">
+            <label class="form-label">Amount</label>
+            <%= f.number_field :amount, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Type</label>
+            <%= f.select :bill_type, options_for_select(Bill.bill_types.keys), { prompt: 'Select bill' }, class: 'form-select form-select-lg mb-3', aria: { label: '.form-select-lg example' } %>    
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Employee</label>
+            <%= f.select :employee_id, options_for_select(Employee.all.map { |employee| [employee.full_name, employee.id] } ), { prompt: 'Select bill' }, class: 'form-select form-select-lg mb-3', aria: { label: '.form-select-lg example' } %> 
+          </div>
+
+          <div class="mb-3">
+            <%= f.submit "Create", class: "btn gradient-custom-2 " %>  
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

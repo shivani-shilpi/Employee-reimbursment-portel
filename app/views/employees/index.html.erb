@@ -1,0 +1,61 @@
+<div style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-xl-12">
+        <table class="table table-striped b-content text-black">
+          <thead class="table gradient-custom-2">
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Full Name</th>
+              <th scope='col'>Designation</th>
+              <th scope="col">Department</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @employees.each do |employee| %>
+              <tr>
+                <td><%= employee.id %></td>
+                <td><%= employee.full_name %></td>
+                <td><%= employee.designation %></td>
+                <td><%= employee.department.name %></td>
+                <td>
+                  <%= link_to "Show", employee_path(employee), class: "btn btn-outline-primary" %>
+                  <%= link_to "Edit", edit_employee_path(employee), class: 'btn btn-outline-info', data: {bs_toggle: 'modal', bs_target: '#updateModal'} %>
+                  <%= link_to "Delete", employee, data: { turbo_method: :delete, confirm: "Are you sure" }, class: 'btn btn-outline-danger' %>
+                </th>         
+              </tr>
+
+            <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="updateModalLabel">Update Employee</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                      <%= render "update", employee: employee %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </tbody>
+        </table>
+        <%= link_to "Create Employee", new_employee_path, class: 'btn gradient-custom-2 mb-2', data: { bs_toggle: "modal", bs_target: "#employeeModal" }  %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="employeeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="employeeModalLabel">Create Employee</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <%= render "form" %>
+    </div>
+  </div>
+</div>
+
