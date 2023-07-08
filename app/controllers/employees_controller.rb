@@ -18,7 +18,7 @@ class EmployeesController < ApplicationController
       flash[:notice] = "Employee created"
       redirect_to employees_path
     else 
-      flash[:alert] = "#{@note.errors.full_messages.join("\n")}"
+      flash[:alert] = "#{@employee.errors.full_messages.join("\n")}"
     end
   end
 
@@ -30,7 +30,7 @@ class EmployeesController < ApplicationController
       flash[:notice] = "Employee updated"
       redirect_to employees_path
     else 
-      flash[:alert] = "#{@note.errors.full_messages.join("\n")}"
+      flash[:alert] = "#{@employee.errors.full_messages.join("\n")}"
     end
   end
 
@@ -39,7 +39,7 @@ class EmployeesController < ApplicationController
       flash[:notice] = "Employee deleted"
       redirect_to employees_path
     else 
-      flash[:alert] = "#{@note.errors.full_messages.join("\n")}"
+      flash[:alert] = "#{@employee.errors.full_messages.join("\n")}"
     end
   end
 

@@ -21,7 +21,7 @@
                 <td><%= employee.department.name %></td>
                 <td>
                   <%= link_to "Show", employee_path(employee), class: "btn btn-outline-primary" %>
-                  <%= link_to "Edit", edit_employee_path(employee), class: 'btn btn-outline-info', data: {bs_toggle: 'modal', bs_target: '#updateModal'} %>
+                  <%= link_to "Edit", edit_employee_path(employee), class: 'btn btn-outline-info', data: {turbo_method: :patch, bs_toggle: 'modal', bs_target: '#updateModal'} %>
                   <%= link_to "Delete", employee, data: { turbo_method: :delete, confirm: "Are you sure" }, class: 'btn btn-outline-danger' %>
                 </th>         
               </tr>
